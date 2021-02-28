@@ -33,8 +33,12 @@ export default {
     }
   },
   async created() {
-    const { message } = await this.$axios.$get('/api/hello')
-    this.message = message
+    try {
+      const { message } = await this.$axios.$get('/api/hello')
+      this.message = message
+    } catch (error) {
+      this.message = `Falhou axios na api`
+    }
   },
 }
 </script>
